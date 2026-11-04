@@ -45,19 +45,34 @@ try {
         $targets += @{Path=(Join-Path $sa 'downloading\108600'); Note='незавершённые загрузки игры'}
         $targets += @{Path=(Join-Path $sa 'shadercache\108600'); Note='кэш шейдеров'}
     }
-    $targets += @{Path=(Join-Path $env:USERPROFILE 'Zomboid'); Note='сохранения, настройки и логи. Скопируй Zomboid\Saves заранее, если они нужны'}
+    $zomboid = Join-Path $env:USERPROFILE 'Zomboid'
+    # Сохранения и логи остаются отдельными каталогами на диске, но предлагаются
+    # одним выбором, как просил пользователь. Настройки вынесены в свой пункт.
+    $targets += @{Paths=@((Join-Path $zomboid 'Saves'), (Join-Path $zomboid 'Logs')); Label='Saves + Logs'; Note='миры сохранений и журналы игры. Удаление миров необратимо — сохрани нужные заранее'}
+    $targets += @{Paths=@((Join-Path $zomboid 'Lua'), (Join-Path $zomboid 'InputBindings'), (Join-Path $zomboid 'joypads'), (Join-Path $zomboid 'Sandbox Presets'), (Join-Path $zomboid 'Server'), (Join-Path $zomboid 'mods.txt.backup')); Label='Настройки'; Note='настройки модов, управления и пресеты; после удаления игра создаст часть заново'}
+    # Остальные данные пользователя предлагаем по отдельности: можно выбрать
+    # только действительно ненужные каталоги, включая логи модов и кэши.
+    $groupedNames = @('Saves', 'Logs', 'Lua', 'InputBindings', 'joypads', 'Sandbox Presets', 'Server', 'mods.txt.backup')
+    if (Test-Path -LiteralPath $zomboid) {
+        Get-ChildItem -LiteralPath $zomboid -Force -ErrorAction SilentlyContinue | Where-Object { $_.PSIsContainer -and $_.Name -notin $groupedNames } | ForEach-Object {
+            $targets += @{Paths=@($_.FullName); Label=$_.Name; Note='данные Project Zomboid в пользовательской папке'}
+        }
+    }
     $freed = [int64]0
     foreach ($t in $targets) {
-        $full = [IO.Path]::GetFullPath($t.Path).TrimEnd('\')
-        if ($targetPaths.ContainsKey($full)) { continue }
-        $targetPaths[$full] = $true
-        if (-not (Test-Path -LiteralPath $full)) { continue }
-        $bytes = Get-DirBytes $full
-        Write-Host "`n$full" -ForegroundColor Cyan
-        Write-Host "  $(Fmt $bytes) — $($t.Note)"
-        $ans = Read-Host '  Удалить эту папку? (y/N)'
+        $paths = if ($t.Paths) { @($t.Paths) } else { @($t.Path) }
+        $existing = @($paths | ForEach-Object { [IO.Path]::GetFullPath($_).TrimEnd('\') } | Where-Object { (Test-Path -LiteralPath $_) -and -not $targetPaths.ContainsKey($_) })
+        if ($existing.Count -eq 0) { continue }
+        foreach ($full in $existing) { $targetPaths[$full] = $true }
+        [int64]$bytes = 0
+        foreach ($full in $existing) { $bytes += Get-DirBytes $full }
+        $label = if ($t.Label) { $t.Label } else { $existing[0] }
+        Write-Host "`n$label" -ForegroundColor Cyan
+        foreach ($full in $existing) { Write-Host "  $full — $(Fmt (Get-DirBytes $full))" }
+        Write-Host "  Всего: $(Fmt $bytes) — $($t.Note)"
+        $ans = Read-Host '  Удалить перечисленные папки? (y/N)'
         if ($ans -ceq 'y') {
-            Remove-Item -LiteralPath $full -Recurse -Force
+            foreach ($full in $existing) { Remove-Item -LiteralPath $full -Recurse -Force }
             $freed += $bytes
             Write-Host '  Удалено' -ForegroundColor Green
         }
