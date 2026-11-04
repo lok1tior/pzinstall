@@ -30,13 +30,15 @@ function Get-SteamLibraries {
 }
 
 try {
-    if (Get-Process ProjectZomboid64 -ErrorAction SilentlyContinue) { throw 'Project Zomboid запущен. Закрой игру и запусти скрипт снова.' }
+    if ((Get-Process ProjectZomboid64 -ErrorAction SilentlyContinue) -or (Get-Process ProjectZomboidServer -ErrorAction SilentlyContinue)) { throw 'Project Zomboid или сервер запущен. Закрой игру/сервер и запусти скрипт снова.' }
     $targets = @(); $targetPaths = @{}
     foreach ($lib in @(Get-SteamLibraries)) {
         $sa = Join-Path $lib 'steamapps'
         $installed = Test-Path -LiteralPath (Join-Path $sa 'appmanifest_108600.acf')
         if ($installed) {
             Write-Host "Игра установлена в $lib — папку игры не предлагаю удалять." -ForegroundColor Yellow
+            $serverWorkshop = Join-Path $sa 'common\ProjectZomboid\steamapps\workshop'
+            $targets += @{Path=$serverWorkshop; Note='Отдельная копия Workshop-модов и служебный манифест, используемые локальным Host/сервером. Это не обычная подписочная папка Steam. После удаления Steam-клиент сам её не восстановит; при следующем запуске хостинга нужные серверу моды могут скачаться снова.'}
         } else {
             $targets += @{Path=(Join-Path $sa 'common\ProjectZomboid'); Note='остатки папки игры'}
         }
@@ -55,7 +57,20 @@ try {
     $groupedNames = @('Saves', 'Logs', 'Lua', 'InputBindings', 'joypads', 'Sandbox Presets', 'Server', 'mods.txt.backup')
     if (Test-Path -LiteralPath $zomboid) {
         Get-ChildItem -LiteralPath $zomboid -Force -ErrorAction SilentlyContinue | Where-Object { $_.PSIsContainer -and $_.Name -notin $groupedNames } | ForEach-Object {
-            $targets += @{Paths=@($_.FullName); Label=$_.Name; Note='данные Project Zomboid в пользовательской папке'}
+            $note = switch -Regex ($_.Name) {
+                '^backups$' { 'Резервные копии игровых данных; удаляй, только если они больше не нужны.'; break }
+                '^Crafting$' { 'Пользовательские данные/состояние крафта.'; break }
+                '^db$' { 'Базы данных серверов, включая списки игроков и администрирование.'; break }
+                '^mods$' { 'Локальные моды, установленные не через обычную подписку Steam Workshop.'; break }
+                '^Workshop$' { 'Локальные проекты Workshop, например подготовка собственных модов.'; break }
+                '^Screenshots$' { 'Скриншоты игры.'; break }
+                '^Recording$' { 'Записи игрового процесса, если они есть.'; break }
+                '^PZO$' { 'Данные дополнительного компонента/мода PZO.'; break }
+                '^viewpoint-' { 'Данные/кэш мода Viewpoint.'; break }
+                '^TrueWeathers$' { 'Данные мода TrueWeathers.'; break }
+                default { 'Пользовательские данные или настройки Project Zomboid.' }
+            }
+            $targets += @{Paths=@($_.FullName); Label=$_.Name; Note=$note}
         }
     }
     $freed = [int64]0
@@ -68,9 +83,11 @@ try {
         foreach ($full in $existing) { $bytes += Get-DirBytes $full }
         $label = if ($t.Label) { $t.Label } else { $existing[0] }
         Write-Host "`n$label" -ForegroundColor Cyan
-        foreach ($full in $existing) { Write-Host "  $full — $(Fmt (Get-DirBytes $full))" }
-        Write-Host "  Всего: $(Fmt $bytes) — $($t.Note)"
-        $ans = Read-Host '  Удалить перечисленные папки? (y/N)'
+        Write-Host '  Что будет удалено:' -ForegroundColor White
+        foreach ($full in $existing) { Write-Host "    $full — $(Fmt (Get-DirBytes $full))" }
+        Write-Host "  Всего: $(Fmt $bytes)"
+        Write-Host "  Для чего это нужно / что содержит: $($t.Note)" -ForegroundColor Gray
+        $ans = Read-Host '  Удалить перечисленные данные? (y/N)'
         if ($ans -ceq 'y') {
             foreach ($full in $existing) { Remove-Item -LiteralPath $full -Recurse -Force }
             $freed += $bytes
