@@ -8,9 +8,9 @@ $ProgressPreference = "SilentlyContinue"
 
 # ---------------- НАСТРОЙКИ ----------------
 $WorkshopZBId = "3619862853"      # ID воркшоп-предмета ZombieBuddy
-$PresetName   = "viewpointBETA"   # имя пресета порядка загрузки
+$PresetName   = "Viewpoint"       # имя пресета порядка загрузки
 $Preset = @'
-viewpointBETA:ZombieBuddy;ChuckleberryFinnAlertSystem;errorMagnifier;damnlib;YAPZLib;BicycleMod;CVI;RainCleansBlood;AutoMechanics;RebalancedPropMoving;stanks_suicide;EQUIPMENT_UI_B42;BetterSortCC;FH;dustinguished_bolt_cutters;LGTapeXP;REORDER_THE_HOTBAR;DetailedDescriptionsForOccupationsAndTraits;ModLoadOrderSorter_b42;ImmersiveBlackouts;RET_LethalStealth;Viewpoint;Horse;49powerWagon;62daimlerFerret;63beetle;63Type2Van;65banshee;66pontiacLeMans;67gt500;68firebird;69camaro;69charger;69fordMustang;69fordMustangExtra;69mini;70chevelle;70dodge;70fordEscort;70barracuda;70roadRunner;73fordFalcon;73nissanGTR;75grandPrix;76chevyKseries;76chevyKseriesExpanded;76chryslerNewYorker;77firebird;78amgeneralM35A2;78amgeneralM35A2extra;78amgeneralM62;78lamboCountach;79camaro;81deloreanDMC12;82jeepJ10;82oshkoshM911;82firebird;82porsche911;84buickElectra;84cadillacDeVille;84corvette;84jeepXJ;84merc;84oldsmobile98;85buickLeSabre;85chevyCaprice;85chevyStepVan;85chevyStepVanexpanded;85oldsmobileDelta88;85pontiacParisienne;86chevyCUCV;86fordE150;86fordE150expanded;87buickRegal;87chevySuburban;87fordB700;87toyotaCorolla;87toyotaMR2;88chevyS10;88toyotaHilux;89dodgeCaravan;89fordBronco;89trooper;89defender;89volvo200;90bmwE30;90fordF350ambulance;90pierceArrow;91fordLTD;91fordRanger;91geoMetro;91lexusLS400;91nissan240sx;91range;92amgeneralM998;92amgeneralM998extra;92fordCVPI;92jeepYJ;92nissanGTR;93chevySuburban;93chevySuburbanExpanded;93fordElgin;93fordF350;93mustangSSP;93fordTaurus;93townCar;alicesWeaponSling;tsarslib;amclub;KI5campers;DetailedFootwear;KI5minifixes;KI5trailers;PFHDTrueCargo;VanillaGearExpanded;VanillaOutfitsExpanded;VFExpansion1;VMZNEW;VSUIKI5;Parkour;MinimalSidebar;ImprovisedSilencers;AviationCore;UH-1BHelicopter;SMB_steps;SkateboardMod;CarRoofFix;CarEnterExitFix;CarWeaponFix;ProjectALifeNPCs;SpnOpenClothBase;TombBody;SpnOpenCloth;TombBodyTexNUDE;TombGothTexNUDE;ModManager;YakiHS;ATakeABathAndShowerDepthMap;PROJECTRVInterior42;RVInteriorExpansion;RVInteriorExpansionPart2;autotsartrailers;EURY_TRAPPING;improvedhairmenubuild42;ihm_picker;RealisticDash;SawAllLogsDropPlanks;1VCESTANDARD;DieWithStyle;ElliesOutfits;SpnCloth;SVRPClassicBows;SKITTLE_LongTermPreservation4220;SpnHair;TakeABathAndShowerNew;TombGothHair;TombGothMakeup;UsefulBarrelsMP;CACustomMetalWeight;CACustomWoodWeight;TombBodyCompat;TombWardrobeALT;HideClothingSlot;FWOFitnessWorkoutOverhaul;FWOBenchPressTreadmill;LGExtendedPlumbing;alicesWeaponSlingRadialMenu;VHSSkillNameInTooltip;GanydeBielovzki's Frockin Backstage!;GanydeBielovzki's Frockin Splendor! Vol.2;GanydeBielovzki's Frockin Shirts n Ties;GanydeBielovzki's Frockin Splendor!;GanydeBielovzki's Frockin Splendor! Vol.3;GanydeBielovzki's Frockin Splendor! Vol.4;GanydeBielovzki's Frockin Splendor! Vol.5;GanydeBielovzki's Frockin Stompers!;GanydeBielovzki's Frockin Stompers! VFR;GanydeBielovzki's Frockin Wiseguys;MedievalZ;InvisiblePatches;67commando;69mini_ItalianJob;69mini_MrBean;86fordE150mm;BuildYourOwnKayak;CHAINS;isoContainers;ProjectVarietyChapterOne;SapphCooking_B42;TwisTonFireFasterActions;VanillaFoodsExpanded;MattSimpleAddonsFriuts;YakiHSBasegameTexture;ViewpointBloodFX;ViewpointBloodFXAddon;HorsePatch3d;ProjectViewpointADS;ViewpointRollingHills;RollingHillsPhysics;ViewpointAdvancedThrowables;ViewpointHeli;ViewpointTrueBallistics;PZVoxelStudioViewpoint;ViewpointLivingProps;
+Viewpoint:ZombieBuddy;ChuckleberryFinnAlertSystem;errorMagnifier;damnlib;YAPZLib;BicycleMod;CVI;RainCleansBlood;AutoMechanics;RebalancedPropMoving;stanks_suicide;EQUIPMENT_UI_B42;BetterSortCC;FH;dustinguished_bolt_cutters;LGTapeXP;REORDER_THE_HOTBAR;DetailedDescriptionsForOccupationsAndTraits;ModLoadOrderSorter_b42;ImmersiveBlackouts;RET_LethalStealth;Viewpoint;Horse;49powerWagon;62daimlerFerret;63beetle;63Type2Van;65banshee;66pontiacLeMans;67gt500;68firebird;69camaro;69charger;69fordMustang;69fordMustangExtra;69mini;70chevelle;70dodge;70fordEscort;70barracuda;70roadRunner;73fordFalcon;73nissanGTR;75grandPrix;76chevyKseries;76chevyKseriesExpanded;76chryslerNewYorker;77firebird;78amgeneralM35A2;78amgeneralM35A2extra;78amgeneralM62;78lamboCountach;79camaro;81deloreanDMC12;82jeepJ10;82oshkoshM911;82firebird;82porsche911;84buickElectra;84cadillacDeVille;84corvette;84jeepXJ;84merc;84oldsmobile98;85buickLeSabre;85chevyCaprice;85chevyStepVan;85chevyStepVanexpanded;85oldsmobileDelta88;85pontiacParisienne;86chevyCUCV;86fordE150;86fordE150expanded;87buickRegal;87chevySuburban;87fordB700;87toyotaCorolla;87toyotaMR2;88chevyS10;88toyotaHilux;89dodgeCaravan;89fordBronco;89trooper;89defender;89volvo200;90bmwE30;90fordF350ambulance;90pierceArrow;91fordLTD;91fordRanger;91geoMetro;91lexusLS400;91nissan240sx;91range;92amgeneralM998;92amgeneralM998extra;92fordCVPI;92jeepYJ;92nissanGTR;93chevySuburban;93chevySuburbanExpanded;93fordElgin;93fordF350;93mustangSSP;93fordTaurus;93townCar;alicesWeaponSling;tsarslib;amclub;KI5campers;DetailedFootwear;KI5minifixes;KI5trailers;PFHDTrueCargo;VanillaGearExpanded;VanillaOutfitsExpanded;VFExpansion1;VMZNEW;VSUIKI5;Parkour;MinimalSidebar;ImprovisedSilencers;AviationCore;UH-1BHelicopter;SMB_steps;SkateboardMod;CarRoofFix;CarEnterExitFix;CarWeaponFix;ProjectALifeNPCs;SpnOpenClothBase;TombBody;SpnOpenCloth;TombBodyTexNUDE;TombGothTexNUDE;ModManager;YakiHS;ATakeABathAndShowerDepthMap;PROJECTRVInterior42;RVInteriorExpansion;RVInteriorExpansionPart2;autotsartrailers;EURY_TRAPPING;improvedhairmenubuild42;ihm_picker;RealisticDash;SawAllLogsDropPlanks;1VCESTANDARD;DieWithStyle;ElliesOutfits;SpnCloth;SVRPClassicBows;SKITTLE_LongTermPreservation4220;SpnHair;TakeABathAndShowerNew;TombGothHair;TombGothMakeup;UsefulBarrelsMP;CACustomMetalWeight;CACustomWoodWeight;TombBodyCompat;TombWardrobeALT;HideClothingSlot;FWOFitnessWorkoutOverhaul;FWOBenchPressTreadmill;LGExtendedPlumbing;alicesWeaponSlingRadialMenu;VHSSkillNameInTooltip;GanydeBielovzki's Frockin Backstage!;GanydeBielovzki's Frockin Splendor! Vol.2;GanydeBielovzki's Frockin Shirts n Ties;GanydeBielovzki's Frockin Splendor!;GanydeBielovzki's Frockin Splendor! Vol.3;GanydeBielovzki's Frockin Splendor! Vol.4;GanydeBielovzki's Frockin Splendor! Vol.5;GanydeBielovzki's Frockin Stompers!;GanydeBielovzki's Frockin Stompers! VFR;GanydeBielovzki's Frockin Wiseguys;MedievalZ;InvisiblePatches;67commando;69mini_ItalianJob;69mini_MrBean;86fordE150mm;BuildYourOwnKayak;CHAINS;isoContainers;ProjectVarietyChapterOne;SapphCooking_B42;TwisTonFireFasterActions;VanillaFoodsExpanded;MattSimpleAddonsFriuts;YakiHSBasegameTexture;ViewpointBloodFX;ViewpointBloodFXAddon;HorsePatch3d;ProjectViewpointADS;ViewpointRollingHills;RollingHillsPhysics;ViewpointAdvancedThrowables;ViewpointHeli;ViewpointTrueBallistics;PZVoxelStudioViewpoint;ViewpointLivingProps;
 '@
 $Preset = $Preset.Trim()
 # -------------------------------------------
@@ -119,7 +119,7 @@ try {
         Write-Host "ZombieBuddy ещё не скачан Steam. Подпишись на коллекцию, дождись конца загрузки и запусти скрипт ещё раз." -ForegroundColor Yellow
     }
 
-    # ---------- 4. Порядок загрузки модов (старые пресеты не трогаем) ----------
+    # ---------- 4. Порядок загрузки модов ----------
     $cfgDir = Join-Path $env:USERPROFILE "Zomboid\Lua"
     $cfg = Join-Path $cfgDir "pz_modlist_settings.cfg"
     New-Item -ItemType Directory -Force -Path $cfgDir | Out-Null
@@ -129,22 +129,38 @@ try {
         if (-not (Test-Path "$cfg.bak")) { Copy-Item $cfg "$cfg.bak" }
         $old = [IO.File]::ReadAllText($cfg)
     }
-    $trailing = ""
-    if ($old -match '(\s+)$') { $trailing = $Matches[1] }
-    $body = $old.TrimEnd()
-
-    # пресет "Имя:мод;мод;...;" - ищем только свой, по имени
-    $pattern = '(?<![^;])' + [regex]::Escape($PresetName) + ':[^:]*;'
-    if ($body -match $pattern) {
-        $ev = [System.Text.RegularExpressions.MatchEvaluator]{ param($m) $Preset }
-        $body = [regex]::Replace($body, $pattern, $ev)
-        Write-Host "Пресет $PresetName обновлён, остальные пресеты не тронуты" -ForegroundColor Green
-    } else {
-        if ($body -and -not $body.EndsWith(";")) { $body += ";" }
-        $body += $Preset
-        Write-Host "Пресет $PresetName добавлен в конец файла" -ForegroundColor Green
+    # Формат игры: отдельная строка !fav!:..., затем отдельная строка на каждый пресет Name:mod;mod;...;
+    # Раньше разделитель ';' склеивал запись пресета с предыдущей строкой избранного.
+    $lines = @()
+    if (-not [string]::IsNullOrWhiteSpace($old)) {
+        $lines = @([regex]::Split($old.Trim(), '\r?\n') | ForEach-Object { $_.Trim() } | Where-Object { $_ })
     }
-    [IO.File]::WriteAllText($cfg, $body + $trailing, $utf8)
+    $favIndex = -1
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match '^!fav!:') { $favIndex = $i; break }
+    }
+    if ($favIndex -lt 0) { $lines = @('!fav!:') + $lines }
+
+    $presetIndex = -1
+    $presetPrefix = '^' + [regex]::Escape($PresetName) + ':'
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match $presetPrefix) { $presetIndex = $i; break }
+    }
+    if ($presetIndex -ge 0) {
+        $lines[$presetIndex] = $Preset
+        Write-Host "Пресет $PresetName обновлён, остальные пресеты и избранное сохранены" -ForegroundColor Green
+    } elseif ($favIndex -ge 0 -and $lines[$favIndex] -match '^!fav!:Viewpoint;(.+)$') {
+        # Исправляем старую ошибочную запись, где имя пресета и его моды оказались в строке избранного.
+        # Резервная копия cfg создаётся выше; содержимое переносим в новый пресет, избранное очищаем.
+        $migratedMods = $Matches[1]
+        $lines[$favIndex] = '!fav!:'
+        $lines += ($PresetName + ':' + $migratedMods)
+        Write-Host "Список модов перенесён из ошибочной строки избранного в пресет $PresetName" -ForegroundColor Green
+    } else {
+        $lines += $Preset
+        Write-Host "Пресет $PresetName добавлен отдельной строкой; остальные пресеты и избранное сохранены" -ForegroundColor Green
+    }
+    [IO.File]::WriteAllText($cfg, ($lines -join "`r`n") + "`r`n", $utf8)
 
     # ---------- 4б. Бета Project Viewpoint (ставится вручную из zip) ----------
     # Zip НЕЛЬЗЯ выкладывать в репозиторий: лицензия Viewpoint запрещает перезаливать мод и включать его в сборки.
@@ -195,4 +211,5 @@ catch {
     Write-Host ""
     Write-Host "ОШИБКА: $($_.Exception.Message)" -ForegroundColor Red
     Write-Host "Если написано про доступ - запусти PowerShell от имени администратора." -ForegroundColor Yellow
+    exit 1
 }
